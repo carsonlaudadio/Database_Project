@@ -1,0 +1,142 @@
+<DATA>
+
+	<ROW>
+		<PlantDesignationID>1</PlantDesignationID>
+		<PlantName>Indian Paintbrush</PlantName>
+		<GroupID>2</GroupID>
+		<IdealSoil_pH>1.21</IdealSoil_pH>
+		<IdealSunlight>10</IdealSunlight>
+		<IdealTemperature>77</IdealTemperature>
+		<Environment>chaparral</Environment>
+	</ROW>
+
+	<ROW>
+		<PlantDesignationID>2</PlantDesignationID>
+		<PlantName>White Spruce Tree</PlantName>
+		<GroupID>12</GroupID>
+		<IdealSoil_pH>4.65</IdealSoil_pH>
+		<IdealSunlight>10</IdealSunlight>
+		<IdealTemperature>55</IdealTemperature>
+		<Environment>taiga</Environment>
+	</ROW>
+
+	<ROW>
+		<PlantDesignationID>3</PlantDesignationID>
+		<PlantName>Mangrove</PlantName>
+		<GroupID>11</GroupID>
+		<IdealSoil_pH>3.35</IdealSoil_pH>
+		<IdealSunlight>10</IdealSunlight>
+		<IdealTemperature>58</IdealTemperature>
+		<Environment>marine</Environment>
+	</ROW>
+
+	<ROW>
+		<PlantDesignationID>4</PlantDesignationID>
+		<PlantName>Fern</PlantName>
+		<GroupID>90</GroupID>
+		<IdealSoil_pH>4.53</IdealSoil_pH>
+		<IdealSunlight>10</IdealSunlight>
+		<IdealTemperature>77</IdealTemperature>
+		<Environment>deciduous</Environment>
+	</ROW>
+
+	<ROW>
+		<PlantDesignationID>5</PlantDesignationID>
+		<PlantName>Pine Tree</PlantName>
+		<GroupID>94</GroupID>
+		<IdealSoil_pH>1.63</IdealSoil_pH>
+		<IdealSunlight>10</IdealSunlight>
+		<IdealTemperature>70</IdealTemperature>
+		<Environment>taiga</Environment>
+	</ROW>
+
+	<ROW>
+		<PlantDesignationID>6</PlantDesignationID>
+		<PlantName>Petit Baguette</PlantName>
+		<GroupID>14</GroupID>
+		<IdealSoil_pH>2.39</IdealSoil_pH>
+		<IdealSunlight>10</IdealSunlight>
+		<IdealTemperature>38</IdealTemperature>
+		<Environment>tundra</Environment>
+	</ROW>
+
+	<ROW>
+		<PlantDesignationID>7</PlantDesignationID>
+		<PlantName>Orchid</PlantName>
+		<GroupID>98</GroupID>
+		<IdealSoil_pH>3.29</IdealSoil_pH>
+		<IdealSunlight>10</IdealSunlight>
+		<IdealTemperature>62</IdealTemperature>
+		<Environment>rainforest</Environment>
+	</ROW>
+
+	<ROW>
+		<PlantDesignationID>8</PlantDesignationID>
+		<PlantName>Island Oasis - Raspberry</PlantName>
+		<GroupID>26</GroupID>
+		<IdealSoil_pH>0.74</IdealSoil_pH>
+		<IdealSunlight>10</IdealSunlight>
+		<IdealTemperature>90</IdealTemperature>
+		<Environment>deciduous</Environment>
+	</ROW>
+
+	<ROW>
+		<PlantDesignationID>9</PlantDesignationID>
+		<PlantName>Foxtail Agave</PlantName>
+		<GroupID>67</GroupID>
+		<IdealSoil_pH>2.26</IdealSoil_pH>
+		<IdealSunlight>10</IdealSunlight>
+		<IdealTemperature>79</IdealTemperature>
+		<Environment>desert</Environment>
+	</ROW>
+
+	<ROW>
+		<PlantDesignationID>10</PlantDesignationID>
+		<PlantName>Lemon Grass</PlantName>
+		<GroupID>6</GroupID>
+		<IdealSoil_pH>1.09</IdealSoil_pH>
+		<IdealSunlight>10</IdealSunlight>
+		<IdealTemperature>80</IdealTemperature>
+		<Environment>savannah</Environment>
+	</ROW>
+
+	<ROW>
+		<PlantDesignationID>11</PlantDesignationID>
+		<PlantName>Tomatoes</PlantName>
+		<GroupID>6</GroupID>
+		<IdealSoil_pH>1.09</IdealSoil_pH>
+		<IdealSunlight>10</IdealSunlight>
+		<IdealTemperature>80</IdealTemperature>
+		<Environment>rainforest</Environment>
+	</ROW>
+
+	<ROW>
+		<PlantDesignationID>12</PlantDesignationID>
+		<PlantName>Lillies</PlantName>
+		<GroupID>26</GroupID>
+		<IdealSoil_pH>0.74</IdealSoil_pH>
+		<IdealSunlight>10</IdealSunlight>
+		<IdealTemperature>85</IdealTemperature>
+		<Environment>deciduous</Environment>
+	</ROW>
+
+	<ROW>
+		<PlantDesignationID>13</PlantDesignationID>
+		<PlantName>Monkey Grass</PlantName>
+		<GroupID>67</GroupID>
+		<IdealSoil_pH>2.26</IdealSoil_pH>
+		<IdealSunlight>10</IdealSunlight>
+		<IdealTemperature>79</IdealTemperature>
+		<Environment>Savannah</Environment>
+	</ROW>
+
+	<ROW>
+		<PlantDesignationID>14</PlantDesignationID>
+		<PlantName>Japanese Maple</PlantName>
+		<GroupID>6</GroupID>
+		<IdealSoil_pH>1.09</IdealSoil_pH>
+		<IdealSunlight>10</IdealSunlight>
+		<IdealTemperature>58</IdealTemperature>
+		<Environment>deciduous</Environment>
+	</ROW>
+</DATA>

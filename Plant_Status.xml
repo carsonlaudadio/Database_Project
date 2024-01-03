@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+xmlns:html="http://www.w3.org/TR/REC-html40">
+<Worksheet ss:Name="Table1">
+	<Table>
+		<Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="110"/>
+		<Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="110"/>
+		<Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="110"/>
+		<Row>
+			<Cell><Data ss:Type="String">PlantID</Data></Cell>
+			<Cell><Data ss:Type="String">last_watering</Data></Cell>
+			<Cell><Data ss:Type="String">SoilMoisture</Data></Cell>
+			<Cell><Data ss:Type="String">Soil_pH</Data></Cell>
+			<Cell><Data ss:Type="String">Sunlight</Data></Cell>
+			<Cell><Data ss:Type="String">Temperature</Data></Cell>
+			<Cell><Data ss:Type="String">PlantDesignationID</Data></Cell>
+		</Row>
+
+		<Row>
+			<Cell><Data ss:Type="Number">33391</Data></Cell>
+			<Cell><Data ss:Type="String">D'arcy</Data></Cell>
+			<Cell><Data ss:Type="String">Nortunen</Data></Cell>
+			<Cell><Data ss:Type="String">Account Executive</Data></Cell>
+			<Cell><Data ss:Type="Number">62871</Data></Cell>
+			<Cell><Data ss:Type="Number">37270</Data></Cell>
+			<Cell><Data ss:Type="Number">1</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">37270</Data></Cell>
+			<Cell><Data ss:Type="String">Yovonnda</Data></Cell>
+			<Cell><Data ss:Type="String">Magrannell</Data></Cell>
+			<Cell><Data ss:Type="String">Executive Secretary</Data></Cell>
+			<Cell><Data ss:Type="Number">63996</Data></Cell>
+			<Cell><Data ss:Type="Number"></Data></Cell>
+			<Cell><Data ss:Type="Number">10</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">37851</Data></Cell>
+			<Cell><Data ss:Type="String">Sayer</Data></Cell>
+			<Cell><Data ss:Type="String">Matterson</Data></Cell>
+			<Cell><Data ss:Type="String">Statistician III</Data></Cell>
+			<Cell><Data ss:Type="Number">98926</Data></Cell>
+			<Cell><Data ss:Type="Number">37270</Data></Cell>
+			<Cell><Data ss:Type="Number">1</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">40448</Data></Cell>
+			<Cell><Data ss:Type="String">Mindy</Data></Cell>
+			<Cell><Data ss:Type="String">Crissil</Data></Cell>
+			<Cell><Data ss:Type="String">Staff Scientist</Data></Cell>
+			<Cell><Data ss:Type="Number">94860</Data></Cell>
+			<Cell><Data ss:Type="Number">37270</Data></Cell>
+			<Cell><Data ss:Type="Number">1</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">56274</Data></Cell>
+			<Cell><Data ss:Type="String">Keriann</Data></Cell>
+			<Cell><Data ss:Type="String">Alloisi</Data></Cell>
+			<Cell><Data ss:Type="String">VP Marketing</Data></Cell>
+			<Cell><Data ss:Type="Number">110150</Data></Cell>
+			<Cell><Data ss:Type="Number">37270</Data></Cell>
+			<Cell><Data ss:Type="Number">1</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">63196</Data></Cell>
+			<Cell><Data ss:Type="String">Alaster</Data></Cell>
+			<Cell><Data ss:Type="String">Scutchin</Data></Cell>
+			<Cell><Data ss:Type="String">Assistant Professor</Data></Cell>
+			<Cell><Data ss:Type="Number">32179</Data></Cell>
+			<Cell><Data ss:Type="Number">37270</Data></Cell>
+			<Cell><Data ss:Type="Number">2</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">67009</Data></Cell>
+			<Cell><Data ss:Type="String">North</Data></Cell>
+			<Cell><Data ss:Type="String">de Clerc</Data></Cell>
+			<Cell><Data ss:Type="String">VP Product Management</Data></Cell>
+			<Cell><Data ss:Type="Number">114257</Data></Cell>
+			<Cell><Data ss:Type="Number">37270</Data></Cell>
+			<Cell><Data ss:Type="Number">2</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">67370</Data></Cell>
+			<Cell><Data ss:Type="String">Elladine</Data></Cell>
+			<Cell><Data ss:Type="String">Rising</Data></Cell>
+			<Cell><Data ss:Type="String">Social Worker</Data></Cell>
+			<Cell><Data ss:Type="Number">96767</Data></Cell>
+			<Cell><Data ss:Type="Number">37270</Data></Cell>
+			<Cell><Data ss:Type="Number">2</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">68249</Data></Cell>
+			<Cell><Data ss:Type="String">Nisse</Data></Cell>
+			<Cell><Data ss:Type="String">Voysey</Data></Cell>
+			<Cell><Data ss:Type="String">Financial Advisor</Data></Cell>
+			<Cell><Data ss:Type="Number">52832</Data></Cell>
+			<Cell><Data ss:Type="Number">37270</Data></Cell>
+			<Cell><Data ss:Type="Number">2</Data></Cell>
+		</Row>	</Table>
+</Worksheet>
+</Workbook>

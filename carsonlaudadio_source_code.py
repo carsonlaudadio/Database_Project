@@ -7,9 +7,13 @@ from tkinter import *
 from tkinter import ttk
 import tkinter as tk
 import re
-
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
+from datetime import datetime, timezone
+import certifi
 from numpy import empty
-
+import pymongo
+from usersList_fetch import fetchFirstNames
 
 m_rPlantName = []
 m_rTemperature = []
@@ -21,6 +25,9 @@ m_sPlantName = []
 m_aUserID = []
 count = 1
 
+
+uri = "mongodb+srv://carsonlaudadio:Portas123!@cluster0.5lze99u.mongodb.net/?retryWrites=true&w=majority"
+        
 def delete():
    listbox.delete(0,END)
    #Label(top, text="Nothing Found Here!", font=('TkheadingFont, 20')).pack()
@@ -40,6 +47,24 @@ def get_user() :
     for i in listbox_users.curselection() :
         print(listbox_users.get(i))
     return listbox_users.get(i)
+
+def insert_user_with_Mongo():
+    try:
+            # Preparing SQL query to INSERT a record into the database
+        UserID = inputtxt.get(1.0, "end-1c")
+        first_name = inputtxt_first_name.get(1.0, "end-1c")
+        last_name = inputtxt_last_name.get(1.0, "end-1c")
+        sensor_ID = inputtxt_sensor_ID.get(1.0, "end-1c")
+        client = MongoClient(uri, server_api=ServerApi('1'), tlsCAFile=certifi.where())
+        database = client['plantlyDB']
+        userInputs = {"time":datetime.now(),"user_id":UserID,"first_name":first_name,"last_name":last_name,"sensor_ID":sensor_ID}
+        database["users"].insert_one(userInputs)
+        Label(top, text="Input Accepted!", font=('TkheadingFont, 16')).pack()
+    except:
+        # Rolling back in case of error
+        Label(top, text="Failed to add user. Try different inputs", textvariable=UserID, font=('TkheadingFont, 16')).pack()
+        print("\nunsuccessful. failed to add user \n{}, {}, {}\n".format(UserID,first_name,last_name))
+        cnx.rollback()
 
 def insert_user() :
     # Preparing SQL query to INSERT a record into the database
@@ -65,6 +90,7 @@ def insert_user() :
         for i in range(n):
             listbox_users.insert(END, m_rUsersName[i])
         Label(top, text="Input Accepted!", font=('TkheadingFont, 16')).pack()
+    
     except:
     # Rolling back in case of error
         Label(top, text="Failed to add user. Try different inputs", textvariable=UserID, font=('TkheadingFont, 16')).pack()
@@ -99,20 +125,61 @@ def get_user_details() :
     m_sSelection =str(selection)
     stripped_selection = removeSymbols(m_sSelection)
     cleaned_selection = theLastWord(stripped_selection)
-    print("\n\ncleaned selection:\n")
-    print(cleaned_selection)
+    #print("\n\ncleaned selection:\n")
+    #print(cleaned_selection)
+    
+    #Querying using MongoDB
+    client = MongoClient(uri, server_api=ServerApi('1'), tlsCAFile=certifi.where())
+    database = client['plantlyDB']
+    mycol = database["users"]
+    myquery = {"first_name": selection }
+    output = mycol.find(myquery)
+    
+    try:
+            client.admin.command('ping')
+            print("\n\nYou successfully connected to users in get_user_details()!")
+    except Exception as e:
+            print('\n')
+            print(e)
+            print('\nping failed')
+    try:
+        print("output is: {}".format(output))
+        userIDQuery = {"user_id": {}}
+        m_iFoo = mycol.find_one(userIDQuery)
+        print(m_iFoo)
+        # iterate pymongo documents with a for loop
+        #for doc in output:
+        #append each document's ID to the list
+            #m_aUserID += [doc["first_name"]]
+            #print(doc)
+        # print out the IDs
+        #print ("\n\ntotal # of names:", len(m_aUserID))
+        #print(m_aUserID)
+  
+        #print ("\n\ntotal # of queried names:", len(m_aUserID))
+        
+    except:
+        print("You did not sucessfully find the UserID. Check get_user_details.")
     #this section is about taking the query and cleaning the output
-    user_query = ("SELECT UserID FROM users WHERE last_name = (%s)")
-    cursor.execute(user_query, (cleaned_selection,))
-    for(UserID) in cursor:
-        m_aUserID.append(UserID)
-        print(m_aUserID)
-    foo = m_aUserID[-1]
-    bar = str(foo)
-    cleaned_selection = removeSymbols(bar)
-    m_iFoo = int(cleaned_selection)
-    print(m_iFoo)
+        user_query = ("SELECT UserID FROM users WHERE last_name = (%s)")
+        cursor.execute(user_query, (cleaned_selection,))
+        for(UserID) in cursor:
+            m_aUserID.append(UserID)
+            print(m_aUserID)
+        foo = m_aUserID[-1]
+        bar = str(foo)
+        cleaned_selection = removeSymbols(bar)
+        m_iFoo = int(cleaned_selection)
+        print(m_iFoo)
+    
+
+    
     return m_iFoo
+
+def addNewPlantToUser() :
+    top = Toplevel()
+    top.geometry("200x200") 
+    top.title("About this Plant...")
 
 def plant_catalog_selection() :
     m_sPlantDesignationID = get_plant_details()
@@ -136,20 +203,49 @@ def plant_catalog_selection() :
     return foo
 
 def users_registered_plants() :
-    if m_aRegisteredPlants is not 0 :
-        del m_aRegisteredPlants[:]
-    UserID_selection = get_user_details()
-    print(UserID_selection)
-    print("\n\n\nRegistered Plants:\n")
-    registered_plants_query = ("SELECT PlantName FROM registered_plants INNER JOIN users ON users.UserID = registered_plants.UserID WHERE users.UserID = (%s);")
-    cursor.execute(registered_plants_query, (UserID_selection,))
-    for(PlantName) in cursor:
-        m_aRegisteredPlants.append(PlantName)
-        print(m_aRegisteredPlants)
-    n = len(m_aRegisteredPlants)
-    element = ''
-    for i in range(n):
-        listbox.insert(1, m_aRegisteredPlants[i])
+    try:
+        print("\n\nI'M HERE\n\n")
+        UserID_selection = get_user_details()
+        print("The User ID selected is: {}\n".format(UserID_selection))
+        if m_aRegisteredPlants is not empty :
+            del m_aRegisteredPlants[:]
+        else:
+            addNewPlantToUser()
+            print("\n\nWait...I'm here\n")
+        print("\n\n\nRegistered Plants:\n")
+        
+        database = client['plantlyDB']
+        mycol = database["sensorData"]
+        myquery = {"humidity": 1014 }
+        output = mycol.find(myquery)
+        firstNames = []
+        try:
+                client.admin.command('ping')
+                print("\n\nPinged your deployment. You successfully connected to your sensor data!")
+        except Exception as e:
+                print('\nping failed\n\n{}\n'.format(e))
+        try:
+            # iterate pymongo documents with a for loop
+            for doc in output:
+            # append each document's ID to the list
+                m_rRegistered_plants += [doc["temperature"]]
+            # print out the IDs
+            print(m_rRegistered_plants)
+            print ("\n\ntotal # of queried plants:", len(m_rRegistered_plants))
+           
+        except:
+            registered_plants_query = ("SELECT PlantName FROM registered_plants INNER JOIN users ON users.UserID = registered_plants.UserID WHERE users.UserID = (%s);")
+            print(m_aRegisteredPlants)
+            cursor.execute(registered_plants_query, (UserID_selection,))
+        for(PlantName) in cursor:
+            m_aRegisteredPlants.append(PlantName)
+            print(m_aRegisteredPlants)
+        n = len(m_aRegisteredPlants)
+        element = ''
+        for i in range(n):
+            listbox.insert(1, m_aRegisteredPlants[i])
+    except:
+        m_aRegisteredPlants = 0
     return m_aRegisteredPlants
 ##########################################################
 
@@ -184,13 +280,9 @@ else:
         m_rTemperature.append(PlantName)
   print(m_rTemperature)
 
-  users_name_query = ("SELECT first_name, last_name  FROM users")
-  cursor.execute(users_name_query)
-  for(UsersName) in cursor:
-        print("{}".format(UsersName))
-        m_rUsersName.append(UsersName)
-  print("\nName of Users:\n")
-  print(m_rUsersName)
+ 
+
+
 
 ##################################################
 root = Tk()
@@ -233,9 +325,44 @@ inputtxt_last_name = tk.Text(top, bg="light gray",
                    height = 1,
                    width = 15)
 
+# TextBox Creation last_name input
+label_plant_sensor_ID = Label(top, text = "\nInupt Plant Sensor ID")
+inputtxt_sensor_ID = tk.Text(top, bg="light gray",
+                   height = 1,
+                   width = 15)
+
 ###############################################
-#Fill the user text box with the list of users in the database
+
+
+######################################get_users###################
+client = MongoClient(uri, server_api=ServerApi('1'), tlsCAFile=certifi.where())
+database = client['plantlyDB']
+mycol = database["users"]
+myquery = {}
+output = mycol.find(myquery)
+firstNames = []
+
+try:
+        client.admin.command('ping')
+        print("\n\nPinged your deployment. You successfully connected to MongoDB!")
+except Exception as e:
+        print('\n')
+        print(e)
+        print('\nping failed')
+         
+
+      
+  # iterate pymongo documents with a for loop
+for doc in output:
+  # append each document's ID to the list
+    m_rUsersName += [doc["first_name"]]
+   
+
+# print out the IDs
+
+print ("\n\ntotal # of names:", len(m_rUsersName))
 n = len(m_rUsersName)
+
 element = ''
 for i in range(n):
     listbox_users.insert(1, m_rUsersName[i])
@@ -262,7 +389,9 @@ label_first_name.pack()
 inputtxt_first_name.pack()
 label_last_name.pack()
 inputtxt_last_name.pack()
-ttk.Button(top, text="Insert User", command=insert_user).pack()
+label_plant_sensor_ID.pack()
+inputtxt_sensor_ID.pack()
+ttk.Button(top, text="Insert User", command=insert_user_with_Mongo).pack()
 quit_button.pack()
 frm = ttk.Frame(root, padding=20)
 frm.grid()
